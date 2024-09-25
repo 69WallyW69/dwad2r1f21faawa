@@ -38,78 +38,71 @@ const CONFIG = {
     },
     API: "https://discord.com/api/v9/users/@me",
     badges: {
-        Discord_Employee: {
+        Discord_Emloyee: {
             Value: 1,
-            Emoji: "<:WallyW_Discordstaff:1270725405917057128>",
+            Emoji: "<:8485discordemployee:1163172252989259898>",
             Rare: true,
-            Price: 90000
         },
         Partnered_Server_Owner: {
             Value: 2,
-            Emoji: "<:WallyW_Partner:1270725650226876459>",
+            Emoji: "<:9928discordpartnerbadge:1163172304155586570>",
             Rare: true,
-            Price: 600
         },
         HypeSquad_Events: {
             Value: 4,
-            Emoji: "<:WallyW_HypeEvents:1270725883467923526>",
+            Emoji: "<:9171hypesquadevents:1163172248140660839>",
             Rare: true,
-            Price: 1000
         },
         Bug_Hunter_Level_1: {
             Value: 8,
-            Emoji: "<:WallyW_BugHunterNormal:1270726107259338927>",
+            Emoji: "<:4744bughunterbadgediscord:1163172239970140383>",
             Rare: true,
-            Price: 2500
         },
         Early_Supporter: {
             Value: 512,
-            Emoji: "<:WallyW_EarlySupporter:1270726282740633661>",
+            Emoji: "<:5053earlysupporter:1163172241996005416>",
             Rare: true,
-            Price: 60
         },
         Bug_Hunter_Level_2: {
             Value: 16384,
-            Emoji: "<:WallyW_BugHunterMax:1270726634915237888>",
+            Emoji: "<:1757bugbusterbadgediscord:1163172238942543892>",
             Rare: true,
-            Price: 5000
         },
         Early_Verified_Bot_Developer: {
             Value: 131072,
-            Emoji: "<:WallyW_BotDev:1270726831770832937>",
+            Emoji: "<:1207iconearlybotdeveloper:1163172236807639143>",
             Rare: true,
-            Price: 500
         },
         House_Bravery: {
             Value: 64,
-            Emoji: "<:WallyW_Bravery:1270727244138025000>",
+            Emoji: "<:6601hypesquadbravery:1163172246492287017>",
             Rare: false,
-            Price: 0
         },
         House_Brilliance: {
             Value: 128,
-            Emoji: "<:WallyW_Brilliance:1270727620803297374>",
+            Emoji: "<:6936hypesquadbrilliance:1163172244474822746>",
             Rare: false,
-            Price: 0
         },
         House_Balance: {
             Value: 256,
-            Emoji: "<:WallyW_Balance:1270727840228311130>",
+            Emoji: "<:5242hypesquadbalance:1163172243417858128>",
             Rare: false,
-            Price: 0
-        },
-        Discord_Official_Moderator: {
-            Value: 262144,
-            Emoji: "<:WallyW_Moderator:1270728086396338198>",
-            Rare: true,
-            Price: 900
         },
         Active_Developer: {
             Value: 4194304,
-            Emoji: "<:WallyW_Active_Developer:1270728269603536957>",
+            Emoji: "<:1207iconactivedeveloper:1163172534443851868>",
+            Rare: false,
+        },
+        Certified_Moderator: {
+            Value: 262144,
+            Emoji: "<:4149blurplecertifiedmoderator:1163172255489085481>",
             Rare: true,
-            Price: 0
-        }
+        },
+        Spammer: {
+            Value: 1048704,
+            Emoji: "⌨️",
+            Rare: false,
+        },
     },
 };
 
